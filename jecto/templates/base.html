@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Jecto {% block title %}{{ section.title }}{% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE"/>
+    <META HTTP-EQUIV="EXPIRES" CONTENT="0"/>
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE"/>
+    <META NAME="ROBOTS" CONTENT="NONE"/>
+    <META NAME="GOOGLEBOT" CONTENT="NOARCHIVE">  </head>
+    <SCRIPT LANGUAGE="JavaScript" SRC="/media/prototype.js"></SCRIPT>
+    <SCRIPT LANGUAGE="JavaScript">
+      document.observe("dom:loaded", function() {
+        {% block startScript %}{% endblock %}
+      });
+
+      inject = function(url){
+        new Ajax.Request(url, {
+          method: 'get',
+	  onSuccess: function(transport) {
+	  alert('Injection recorded successfuly');
+	  location.reload(true);
+	}
+      });
+
+      }
+    </SCRIPT>    
+
+  <body>
+
+    {% block content %}
+      Welcome to the Jecto system, you should never see this text.
+    {% endblock%}
+</body>
+</html>

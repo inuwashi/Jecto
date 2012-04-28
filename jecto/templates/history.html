@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %} Injection History {% endblock %}
+{% block startScript %}{% endblock %}
+{% block content %}
+  <p><a href="/">Jecto Home</a></p>
+  <div id="historyList" style="position:absolute; top:50px; left: 5px; height: 400px; width: 500px; border:1px solid gray; overflow: auto;">
+    <UL>
+      {% for day in history %}
+	<LI {% if day.1 == None %}style="color:red;"{%endif%}>
+	  {{ day.0 }} -
+	  <a href="#" onclick = "new Ajax.Updater('record', '{% url zones day.0|date:"Y" day.0|date:"m" day.0|date:"d" %}',{});">
+	    {% if day.1 %}
+	      {{ day.1.zone.name }}
+	    {% else %}
+	      Missing - Record now?
+	    {% endif %}
+	  </a>
+	</LI>
+      {% endfor %}
+    </div>
+    <div id="record" name="record" style="position:absolute; top:50px; left: 505px; height: 400px; width: 500px; border:1px solid gray; overflow: auto; text-align: center;">
+      <h3>Please select date to record an injection.</h3>
+    </div>
+  </UL>
+{% endblock %}

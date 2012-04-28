@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %} Injection in {{ zone.name }} Sections {% endblock %}
+{% block content %}
+
+
+
+  <h3>Injection in {{ zone.name }} on {{ date }}</h3>
+
+  <p>Select section: (date of most recent injection listed)</p>
+
+  <table align="center" width="80%" border="1">
+
+  {% for row in items %}
+    <tr>
+      {% for item in row %}
+        <td bgcolor = "{{ item.color }}">
+          <a href = "#" onclick="inject('{% url inject date|date:"Y" date|date:"m" date|date:"d" zone.id item.posX item.posY %}');">
+          {% if item.injection %}
+            {{ item.injection.date }}
+          {% else %}
+            Not recently
+          {% endif %}
+          </a>
+        </td>
+      {% endfor %}
+    </tr>
+  {% endfor %}
+  </table>
+{% endblock %}

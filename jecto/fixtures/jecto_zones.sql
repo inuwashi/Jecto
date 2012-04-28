@@ -1,0 +1,1 @@
+INSERT INTO `jecto_zone` VALUES (1,'Stomach',2,4,4),(2,'Left Hip',1,2,4),(3,'Right Hip',3,2,4),(4,'Right Thigh',5,2,5),(5,'Left Thigh',4,2,5),(6,'Left Arm',-1,1,3),(7,'Right Arm',-1,1,3);

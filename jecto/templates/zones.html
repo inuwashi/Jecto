@@ -1,0 +1,18 @@
+  <h3>Record injection for {{date}}</h3>
+  <table border="1" colspan="0" rowspan="0" align="center" width="80%">
+
+  {% for zone in zones %}
+    <tr>
+      <td bgcolor="{{ zone.2}}">{{ zone.0.name }}</td>
+      <td bgcolor="{{ zone.2}}">{{ zone.1 }}</td>
+      <td bgcolor="{{ zone.2}}"><a href="#" onclick="new Ajax.Updater('record', '{% url sections date|date:"Y" date|date:"m" date|date:"d" zone.0.id %}',{});">
+	{% if zone.1 == None %}
+	  Record Now
+	{% else %}
+	  Update
+	{% endif %}
+      </a></td>
+    </tr>
+  {% endfor %}
+  </table>
+  
